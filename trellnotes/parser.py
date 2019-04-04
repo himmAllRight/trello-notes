@@ -9,6 +9,7 @@ class BoardData:
         self.data = self.load_json()
         self.members = self.instantiate_object('members', Member)
         self.lists = self.instantiate_object('lists', CardList)
+        self.labels = self.instantiate_object('labels', Label)
 
     def load_json(self):
         """loads the json file into a data structre"""
@@ -44,10 +45,13 @@ class CardList:
         self.closed = data['closed']
         self.position = data['pos']
 
+
 class Label:
     """A Trello Label"""
     def __init__(self, data):
-        pass
+        self.trelloid = data['id']
+        self.name = data['name']
+        self.color = data['red']
 
 
 class Card:
