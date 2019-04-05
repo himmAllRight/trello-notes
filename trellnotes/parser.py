@@ -51,7 +51,7 @@ class Label:
     def __init__(self, data):
         self.trelloid = data['id']
         self.name = data['name']
-        self.color = data['red']
+        self.color = data['color']
 
 
 class Card:

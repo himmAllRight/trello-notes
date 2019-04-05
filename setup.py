@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 """setuptools script for installing trellnotes"""
+import os
+from setuptools import find_packages, setup
 
-from setuptools import setup
+_project_root = os.path.abspath(os.path.dirname(__file__))
 
 setup(
     name="trellnotes",
@@ -12,6 +14,6 @@ setup(
     description='Parses trello json exports and outputs it in note form',
     license="GPL-3.0",
     keywords=["json", "notes", "trello"],
-    packages=['trellnotes'],
-    scripts=['bin/trellnotes']
+    packages=find_packages(include=['trellnotes*']),
+#    scripts=['bin/trellnotes']
 )
