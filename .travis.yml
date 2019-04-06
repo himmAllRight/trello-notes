@@ -9,5 +9,4 @@ install:
 
 script:
   - pipenv install
-  - pipenv shell
   - pipenv run make test
