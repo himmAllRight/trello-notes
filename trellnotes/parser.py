@@ -27,7 +27,7 @@ class BoardData:
         return object_list
 
 
-class Member:
+class Member(object):
     """A Trello Board Member"""
     def __init__(self, data):
         self.trelloid = data['id']
