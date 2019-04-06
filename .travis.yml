@@ -8,5 +8,4 @@ install:
   - pip install pipenv
 
 script:
-  - pipenv install
   - pipenv run make test
