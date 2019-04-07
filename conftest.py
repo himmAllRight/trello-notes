@@ -33,3 +33,10 @@ def test_cardlist():
     loaded_board = load_board()
     cardlist = loaded_board.lists
     return cardlist
+
+
+@pytest.fixture(scope='session')
+def test_labels():
+    loaded_board = load_board()
+    labels = loaded_board.labels
+    return labels
