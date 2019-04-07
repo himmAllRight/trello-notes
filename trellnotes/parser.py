@@ -10,6 +10,8 @@ class BoardData:
         self.members = self.instantiate_object('members', Member)
         self.lists = self.instantiate_object('lists', CardList)
         self.labels = self.instantiate_object('labels', Label)
+        self.cards = self.instantiate_object('cards', Card)
+        self.checklists = self.instantiate_object('checklists', Checklist)
 
     def load_json(self):
         """loads the json file into a data structre"""
@@ -57,13 +59,42 @@ class Label:
 class Card:
     """A Trello Card"""
     def __init__(self, data):
-        pass
+        self.trelloid = data['id']
+        self.idshort = data['idShort']
+        self.name = data['name']
+        self.position = data['pos']
+        self.closed = data['closed']
+        self.dateLastActivity = data['dateLastActivity']
+        self.descriotion = data['desc']
+        self.labels = data['idLabels']
+        self.idMembersVoted = data['idMembersVoted']
+        self.shortLink = data['shortLink']
+        self.dueComplete = data['dueComplete']
+        self.due = data['due']
+        self.email = data['email']
+        self.shortUrl = data['shortUrl']
+        self.url = data['url']
+        self.subscribed = data['subscribed']
 
 
-class checklist:
+class Checklist:
     """A Trello Checklist"""
     def __init__(self, data):
-        pass
+        self.trelloid = data['id']
+        self.name = data['name']
+        self.cardID = data['idCard']
+        self.position = data['pos']
+        self.checkItems = [CheckListItem(item) for item in data['checkItems']]
+
+
+class CheckListItem:
+    """An item in a CheckList"""
+    def __init__(self, data):
+        self.trelloid = data['id']
+        self.checklistID = data['idChecklist']
+        self.name = data['name']
+        self.state = data['state']
+        self.position = data['pos']
 
 
 class Action:
