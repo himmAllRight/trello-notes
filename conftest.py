@@ -21,15 +21,15 @@ def test_board():
     return load_board()
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope='session')
 def test_member():
     loaded_board = load_board()
     member = loaded_board.members['599d995a97a48d942e3cf4f2']
     return member
-#
-#
-# @pytest.fixture(scope="session")
-# def test_cardlist():
-#     loaded_board = load_board()
-#     cardlist = loaded_board.lists['599d995a97a48d942e3cf4f2']
-#     return member
+
+
+@pytest.fixture(scope='session')
+def test_cardlist():
+    loaded_board = load_board()
+    cardlist = loaded_board.lists
+    return cardlist
