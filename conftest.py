@@ -40,3 +40,10 @@ def test_labels():
     loaded_board = load_board()
     labels = loaded_board.labels
     return labels
+
+
+@pytest.fixture(scope='session')
+def test_cards():
+    loaded_board = load_board()
+    cards = loaded_board.cards
+    return cards
