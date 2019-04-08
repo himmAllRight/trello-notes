@@ -36,5 +36,5 @@ def test_cardlist_position(test_cardlist):
 def test_cardlist_closed(test_cardlist):
     """Tests the cardlist closed parameter"""
     list1, list2 = get_cardlists(test_cardlist)
-    assert list1.closed == False
-    assert list2.closed == False
+    assert not list1.closed
+    assert not list2.closed
