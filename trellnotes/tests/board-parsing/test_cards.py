@@ -116,10 +116,46 @@ def test_card_due(test_cards):
     assert card4.due is None
 
 
-# def test_card_email(test_cards):
-#     '''Test that the card email is set'''
-#     card1, card2, card3, card4 = get_cards(test_cards)
-#     assert card1.email == 'ryanhimmelwri+2osudntp27…txcyz@boards.trello.com'
-#     assert card2.email == 'ryanhimmelwri+2osudntp27…m1b7i@boards.trello.com'
-#     assert card3.email == 'ryanhimmelwri+2osudntp27…fhpe1@boards.trello.com'
-#     assert card4.email == 'ryanhimmelwri+2osudntp27…2pj1p@boards.trello.com'
+def trellemail(middle_hash, user_part='ryanhimmelwri+'):
+    """Constructs the full trello email from the middle hash"""
+    return user_part + middle_hash + '@boards.trello.com'
+
+
+def test_card_email(test_cards):
+    '''Test that the card email is set'''
+    card1, card2, card3, card4 = get_cards(test_cards)
+    expect1 = trellemail('2osudntp278mqruarqq+2s2v9eul9qidzo3uoa2+2jbnvtxcyz')
+    expect2 = trellemail('2osudntp278mqruarqq+2s2v9vnwt0tqq4rbhgp+08jkom1b7i')
+    expect3 = trellemail('2osudntp278mqruarqq+2s2v9w5qz9tyee26isd+0srxwfhpe1')
+    expect4 = trellemail('2osudntp278mqruarqq+2s2vadkt01y3sv9eeu2+1f78u2pj1p')
+    assert card1.email == expect1
+    assert card2.email == expect2
+    assert card3.email == expect3
+    assert card4.email == expect4
+
+
+def test_short_url(test_cards):
+    '''Test that the card short url is set'''
+    card1, card2, card3, card4 = get_cards(test_cards)
+    assert card1.short_url == 'https://trello.com/c/UQbQ9G1a'
+    assert card2.short_url == 'https://trello.com/c/evt8hxWA'
+    assert card3.short_url == 'https://trello.com/c/Aweh7xYH'
+    assert card4.short_url == 'https://trello.com/c/EpjRTyGv'
+
+
+def test_url(test_cards):
+    '''Test that the card url is set'''
+    card1, card2, card3, card4 = get_cards(test_cards)
+    assert card1.url == 'https://trello.com/c/UQbQ9G1a/1-foo-card'
+    assert card2.url == 'https://trello.com/c/evt8hxWA/2-bar-card'
+    assert card3.url == 'https://trello.com/c/Aweh7xYH/3-foobar-card'
+    assert card4.url == 'https://trello.com/c/EpjRTyGv/4-empty-card'
+
+
+def test_subscribed(test_cards):
+    '''Test that the card subscribed item is set'''
+    card1, card2, card3, card4 = get_cards(test_cards)
+    assert card1.subscribed is True
+    assert card2.subscribed is True
+    assert card3.subscribed is not True
+    assert card4.subscribed is not True
