@@ -1,0 +1,10 @@
+#!/usr/bin/python
+
+'''Script for executing trellnotes'''
+
+from trellnotes.cli import CLI
+
+if __name__ == '__main__':
+    print('main from script')
+    cli = CLI() # instantiate a cli obj?
+    cli.main()

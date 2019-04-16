@@ -47,3 +47,10 @@ def test_cards():
     loaded_board = load_board()
     cards = loaded_board.cards
     return cards
+
+
+@pytest.fixture(scope='session')
+def test_checklist():
+    loaded_board = load_board()
+    cards = loaded_board.cards
+    return cards

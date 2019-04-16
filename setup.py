@@ -15,5 +15,5 @@ setup(
     license="GPL-3.0",
     keywords=["json", "notes", "trello"],
     packages=find_packages(include=['trellnotes*']),
-#    scripts=['bin/trellnotes']
+    scripts=['bin/trellnotes']
 )
