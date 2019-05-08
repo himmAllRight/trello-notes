@@ -16,6 +16,9 @@ class CLI:
         self.parser = ArgumentParser(description='Read in trello board json\
                                      exports and convert to a readable note\
                                      format')
+        self.parser.add_argument('input',
+                                 help='The file path of the input trell json\
+                                 file to parse')
         self.parser.add_argument('--version', action='version',
                                  version=__version__)
 
@@ -24,3 +27,7 @@ class CLI:
         print('in main')
         args = self.parser.parse_args()
         print('args: ' + args)
+
+    def load_board(self):
+        """Loads the board file and instantiates an object"""
+        return self
