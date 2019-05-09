@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 """Contains the main CLI and arg parsing code"""
 
+
+import os
 from argparse import ArgumentParser
+from trellnotes.parser import BoardData
 from . import __version__
-# from trellnotes.parser import BoardData
 
 
 class CLI:
@@ -16,18 +18,29 @@ class CLI:
         self.parser = ArgumentParser(description='Read in trello board json\
                                      exports and convert to a readable note\
                                      format')
-        self.parser.add_argument('input',
-                                 help='The file path of the input trell json\
+        self.parser.add_argument('input_src', type=str,
+                                 help='The file path of the input trello json\
                                  file to parse')
+        self.parser.add_argument('-o', type=str,
+                                 help='The file path of the output notes file')
         self.parser.add_argument('--version', action='version',
                                  version=__version__)
+        self.args = vars(self.parser.parse_args())
 
     def main(self):
-        """Main CLI Method"""
+        '''Main CLI Method'''
         print('in main')
-        args = self.parser.parse_args()
-        print('args: ' + args)
+        print('args: ' + str(self.args))
+        loaded_board = self.load_board()
+        print(loaded_board)
+
+    def src_path(self, src_arg='input_src'):
+        '''Creates the file path to load the json input file from.'''
+        src = self.args[src_arg]
+        path = os.path.abspath(src)
+        return path
 
     def load_board(self):
-        """Loads the board file and instantiates an object"""
-        return self
+        '''Loads the board file and instantiates an object'''
+        loaded_board = BoardData(self.src_path())
+        return loaded_board

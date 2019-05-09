@@ -1,8 +1,11 @@
-from trellnotes.parser import BoardData
-import pytest
+"""Sets up needed and shared functions for testing"""
+
 
 # import sys
 import os
+
+from trellnotes.parser import BoardData
+import pytest
 
 TEST_DIR = os.path.abspath(os.path.join(os.getcwd(), 'trellnotes/tests'))
 TEST_DATA = os.path.abspath(os.path.join(TEST_DIR, 'test-data'))

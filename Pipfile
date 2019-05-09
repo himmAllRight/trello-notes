@@ -9,6 +9,7 @@ pytest = "*"
 [packages]
 pytest = "*"
 trellnotes = {path = "."}
+shell = "*"
 
 [requires]
 python_version = "3.7"
