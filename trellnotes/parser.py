@@ -28,6 +28,12 @@ class BoardData:
             object_list[obj.trelloid] = obj
         return object_list
 
+    def get_objects(self, data_id):
+        """Returns a list of all the Objects for each data class"""
+        print(data_id)
+        data_dict = self.lists
+        return list(data_dict.values())
+
 
 class Member(object):
     """A Trello Board Member"""
@@ -46,6 +52,10 @@ class CardList:
         self.name = data['name']
         self.closed = data['closed']
         self.position = data['pos']
+
+    def output(self):
+        '''Returns a string of the object's data to write to the output.'''
+        return f"{self.name}\n------\n"
 
 
 class Label:
