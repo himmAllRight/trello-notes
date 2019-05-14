@@ -8,9 +8,11 @@ class BoardData:
         self.src = src
         self.data = self.load_json()
         self.members = self.instantiate_object('members', Member)
-        self.lists = self.instantiate_object('lists', CardList)
         self.labels = self.instantiate_object('labels', Label)
         self.cards = self.instantiate_object('cards', Card)
+        empty_lists = self.instantiate_object('lists', CardList)
+        self.lists = empty_lists
+        # empty_lists.set_cards(self.cards)
         self.checklists = self.instantiate_object('checklists', Checklist)
 
     def load_json(self):
@@ -53,6 +55,12 @@ class CardList:
         self.closed = data['closed']
         self.position = data['pos']
 
+#    def set_cards(self, card_list):
+#        """Link the cards in this card list."""
+#        self.cards = {}
+#        for card in list(card_list.values()):
+#            if self.trelloid == card.
+
     def output(self):
         '''Returns a string of the object's data to write to the output.'''
         return f"{self.name}\n------\n"
@@ -76,6 +84,7 @@ class Card:
         self.closed = data['closed']
         self.date_last_activity = data['dateLastActivity']
         self.description = data['desc']
+        self.card_list = data['idList']
         self.label_ids = data['idLabels']
 #        self.id_members_voted = data['idMembersVoted']
         self.short_link = data['shortLink']

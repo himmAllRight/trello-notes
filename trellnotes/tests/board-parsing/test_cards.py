@@ -79,6 +79,15 @@ def test_card_description(test_cards):
     assert card4.description == ''
 
 
+def test_card_cardlist(test_cards):
+    '''Test that the card labels id lists are set'''
+    card1, card2, card3, card4 = get_cards(test_cards)
+    assert card1.card_list == '5ca69567b826c4317ec4971f'
+    assert card2.card_list == '5ca69567b826c4317ec4971f'
+    assert card3.card_list == '5ca6956870d34940b0644a2e'
+    assert card4.card_list == '5ca6956870d34940b0644a2e'
+
+
 def test_card_labels(test_cards):
     '''Test that the card labels id lists are set'''
     card1, card2, card3, card4 = get_cards(test_cards)
