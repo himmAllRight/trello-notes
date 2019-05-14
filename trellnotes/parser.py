@@ -10,10 +10,10 @@ class BoardData:
         self.members = self.instantiate_object('members', Member)
         self.labels = self.instantiate_object('labels', Label)
         self.cards = self.instantiate_object('cards', Card)
-        empty_lists = self.instantiate_object('lists', CardList)
-        self.lists = empty_lists
-        # empty_lists.set_cards(self.cards)
         self.checklists = self.instantiate_object('checklists', Checklist)
+        self.lists = self.instantiate_object('lists', CardList)
+        for card_list in list(self.lists.values()):
+            card_list.set_cards(self.cards)
 
     def load_json(self):
         """loads the json file into a data structre"""
@@ -54,12 +54,14 @@ class CardList:
         self.name = data['name']
         self.closed = data['closed']
         self.position = data['pos']
+        self.cards = {}
 
-#    def set_cards(self, card_list):
-#        """Link the cards in this card list."""
-#        self.cards = {}
-#        for card in list(card_list.values()):
-#            if self.trelloid == card.
+    def set_cards(self, card_list):
+        """Link the cards in this card list."""
+        for card in list(card_list.values()):
+            if self.trelloid == card.card_list:
+                self.cards[card.trelloid] = card
+        return self
 
     def output(self):
         '''Returns a string of the object's data to write to the output.'''
