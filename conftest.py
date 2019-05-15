@@ -5,6 +5,7 @@
 import os
 
 from trellnotes.parser import BoardData
+from trellnotes.writer import Output
 import pytest
 
 TEST_DIR = os.path.abspath(os.path.join(os.getcwd(), 'trellnotes/tests'))
@@ -12,6 +13,7 @@ TEST_DATA = os.path.abspath(os.path.join(TEST_DIR, 'test-data'))
 
 test_board_export = os.path.abspath(os.path.join(TEST_DATA,
                                                  'test-board-export.json'))
+test_output_src = 'test_output.md'
 
 
 def load_board():
@@ -55,5 +57,11 @@ def test_cards():
 @pytest.fixture(scope='session')
 def test_checklist():
     loaded_board = load_board()
-    cards = loaded_board.cards
-    return cards
+    checklists = loaded_board.checklists
+    return checklists
+
+
+@pytest.fixture(scope='session')
+def test_output():
+    output_obj = Output(test_output_src)
+    return output_obj

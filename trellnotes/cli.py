@@ -5,6 +5,7 @@
 import os
 from argparse import ArgumentParser
 from trellnotes.parser import BoardData
+from trellnotes.writer import Output
 from . import __version__
 
 
@@ -21,9 +22,9 @@ class CLI:
         self.parser.add_argument('input_src', type=str,
                                  help='The file path of the input trello json\
                                  file to parse')
-        self.parser.add_argument('-o', type=str,
+        self.parser.add_argument('--output-src', '-o', type=str,
                                  help='The file path of the output notes file',
-                                 default='trellnotes.txt')
+                                 default='trellnotes-output.md')
         self.parser.add_argument('--version', action='version',
                                  version=__version__)
         self.args = vars(self.parser.parse_args())
@@ -34,9 +35,9 @@ class CLI:
         print('args: ' + str(self.args))
         loaded_board = self.load_board()
         print(loaded_board)
-        print("Card lists:")
-        for cardlist in loaded_board.get_objects('lists'):
-            print(cardlist.output())
+        # Testing output
+        output = Output(self.args['output_src'])
+        output.write_output()
 
     def src_path(self, src_arg='input_src'):
         '''Creates the file path to load the json input file from.'''
