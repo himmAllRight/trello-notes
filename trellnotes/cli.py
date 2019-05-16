@@ -37,6 +37,7 @@ class CLI:
         print(loaded_board)
         # Testing output
         output = Output(self.args['output_src'])
+        output.generate_output_string(loaded_board)
         output.write_output()
 
     def src_path(self, src_arg='input_src'):

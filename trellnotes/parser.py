@@ -32,8 +32,7 @@ class BoardData:
 
     def get_objects(self, data_id):
         """Returns a list of all the Objects for each data class"""
-        print(data_id)
-        data_dict = self.lists
+        data_dict = getattr(self, data_id)
         return list(data_dict.values())
 
 
@@ -96,6 +95,10 @@ class Card:
         self.short_url = data['shortUrl']
         self.url = data['url']
         self.subscribed = data['subscribed']
+
+    def output(self):
+        '''Returns a string of the card's data to write to the output.'''
+        return f"{self.name}\n"
 
 
 class Checklist:
