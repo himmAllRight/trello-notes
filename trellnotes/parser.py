@@ -64,7 +64,7 @@ class CardList:
 
     def output(self):
         '''Returns a string of the object's data to write to the output.'''
-        return f"{self.name}\n------\n"
+        return f"## {self.name}\n------"
 
 
 class Label:
@@ -98,7 +98,8 @@ class Card:
 
     def output(self):
         '''Returns a string of the card's data to write to the output.'''
-        return f"{self.name}\n"
+        return f"#### {self.name}\n \
+{self.description}\n"
 
 
 class Checklist:
