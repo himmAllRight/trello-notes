@@ -25,6 +25,10 @@ class CLI:
         self.parser.add_argument('--output-src', '-o', type=str,
                                  help='The file path of the output notes file',
                                  default='trellnotes-output.md')
+        self.parser.add_argument('--include-archived', '-a',
+                                 action='store_true', default=False,
+                                 dest='include_archived',
+                                 help='Also include archived cards in output')
         self.parser.add_argument('--version', action='version',
                                  version=__version__)
         self.args = vars(self.parser.parse_args())
@@ -37,7 +41,7 @@ class CLI:
         print(loaded_board)
         # Testing output
         output = Output(self.args['output_src'])
-        output.generate_output_string(loaded_board)
+        output.generate_output_string(self.args, loaded_board)
         output.write_output()
 
     def src_path(self, src_arg='input_src'):
