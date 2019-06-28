@@ -107,16 +107,16 @@ class Checklist:
     def __init__(self, data):
         self.trelloid = data['id']
         self.name = data['name']
-        self.cardID = data['idCard']
+        self.card_id = data['idCard']
         self.position = data['pos']
-        self.checkItems = [CheckListItem(item) for item in data['checkItems']]
+        self.check_items = [CheckListItem(item) for item in data['checkItems']]
 
 
 class CheckListItem:
     """An item in a CheckList"""
     def __init__(self, data):
         self.trelloid = data['id']
-        self.checklistID = data['idChecklist']
+        self.checklist_id = data['idChecklist']
         self.name = data['name']
         self.state = data['state']
         self.position = data['pos']

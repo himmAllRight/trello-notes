@@ -2,6 +2,7 @@
 
 
 def get_cards(test_cards):
+    '''Gets test cards by their id's and returns to 4 vars.'''
     card1 = test_cards['5ca69576a8eb8a041854896a']
     card2 = test_cards['5ca6961225bbb14b254dd829']
     card3 = test_cards['5ca69616babd363d99f53e9d']
@@ -14,7 +15,7 @@ def test_card_count(test_cards):
     assert len(test_cards) == 4
 
 
-def test_labels_id(test_cards):
+def test_trello_id(test_cards):
     '''Test the card ids are set'''
     card1, card2, card3, card4 = get_cards(test_cards)
     assert card1.trelloid == '5ca69576a8eb8a041854896a'

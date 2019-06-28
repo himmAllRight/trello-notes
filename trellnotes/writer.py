@@ -1,5 +1,5 @@
 '''Contains functions which control printout output'''
-from trellnotes.parser import BoardData
+# from trellnotes.parser import BoardData
 
 
 class Output:
